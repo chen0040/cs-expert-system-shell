@@ -61,7 +61,7 @@ namespace cs_expert_system_shell_tests
         }
 
         [Fact]
-        public void demoForwardChain()
+        public void TestForwardChain()
         {
             RuleInferenceEngine rie = getInferenceEngine();
             rie.AddFact(new IsClause("num_wheels", "4"));
@@ -78,6 +78,8 @@ namespace cs_expert_system_shell_tests
             Console.WriteLine("after inference");
             Console.WriteLine(rie.Facts);
             Console.WriteLine();
+
+            Assert.Equal(6, rie.Facts.Count);
         }
 
         private RuleInferenceEngine getInferenceEngine()

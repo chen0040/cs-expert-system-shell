@@ -70,5 +70,10 @@ namespace chen0040.ExpertSystem
 
             return message.ToString();
         }
+
+        public int Count
+        {
+            get { return m_facts.Count;  }
+        }
     }
 }
