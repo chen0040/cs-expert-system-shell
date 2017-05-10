@@ -24,7 +24,7 @@ namespace cs_expert_system_shell_tests
 
             Console.WriteLine("Conclusion: " + conclusion);
 
-            Assert.Equal(conclusion.getValue(), "MiniVan");
+            Assert.Equal(conclusion.Value, "MiniVan");
         }
 
         public void demoBackwardChainWithNullMemory()
@@ -49,9 +49,9 @@ namespace cs_expert_system_shell_tests
                     Clause c = unproved_conditions[0];
                     Console.WriteLine("ask: " + c + "?");
                     unproved_conditions.Clear();
-                    Console.WriteLine("What is " + c.getVariable() + "?");
+                    Console.WriteLine("What is " + c.Variable + "?");
                     String value = Console.ReadLine();
-                    rie.AddFact(new IsClause(c.getVariable(), value));
+                    rie.AddFact(new IsClause(c.Variable, value));
                 }
             }
 

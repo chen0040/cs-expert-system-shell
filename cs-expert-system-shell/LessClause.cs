@@ -10,13 +10,13 @@ namespace chen0040.ExpertSystem
         public LessClause(String variable, String value)
             : base(variable, value)
         {
-            m_condition = "<";
+            Condition = "<";
         }
 
-        protected override IntersectionType intersect(Clause rhs)
+        protected override IntersectionType Intersect(Clause rhs)
 	    {
-		    String v1=m_value;
-		    String v2=rhs.getValue();
+		    String v1=_value;
+		    String v2=rhs.Value;
 		
 		    double a=0;
 		    double b=0;

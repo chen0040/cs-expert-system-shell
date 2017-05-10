@@ -7,51 +7,53 @@ namespace chen0040.ExpertSystem
 {
     public class Clause
     {
-        protected string m_variable;
-        protected string m_value;
-        public string m_condition { get; set; } = "=";
+        protected string _variable;
+        protected string _value;
+
+        public string Condition { get; protected set; } = "=";
+
+        public String Variable
+        {
+            get { return _variable; }
+        }
+
+        public string Value
+        {
+            get { return _value; }
+        }
 
         public Clause(string variable, string value)
         {
-            m_variable = variable;
-            m_value = value;
+            _variable = variable;
+            _value = value;
         }
 
         public Clause(string variable, string condition, string value)
         {
-            m_variable = variable;
-            m_value = value;
-            m_condition = condition;
+            _variable = variable;
+            _value = value;
+            Condition = condition;
         }
 
-        public string getVariable()
-        {
-            return m_variable;
-        }
 
-        public string getValue()
+        public IntersectionType MatchClause(Clause rhs)
         {
-            return m_value;
-        }
-
-        public IntersectionType matchClause(Clause rhs)
-        {
-            if (m_variable!=rhs.getVariable())
+            if (_variable!=rhs.Variable)
             {
                 return IntersectionType.UNKNOWN;
             }
 
-            return intersect(rhs);
+            return Intersect(rhs);
         }
 
-        protected virtual IntersectionType intersect(Clause rhs)
+        protected virtual IntersectionType Intersect(Clause rhs)
         {
             throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            return m_variable + " " + m_condition + " " + m_value;
+            return _variable + " " + Condition + " " + _value;
         }
     }
 }

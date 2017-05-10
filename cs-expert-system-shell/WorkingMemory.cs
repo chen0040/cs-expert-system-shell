@@ -23,7 +23,7 @@ namespace chen0040.ExpertSystem
         {
             foreach(Clause fact in m_facts)
             {
-                if (fact.matchClause(c) == IntersectionType.MUTUALLY_EXCLUDE)
+                if (fact.MatchClause(c) == IntersectionType.MUTUALLY_EXCLUDE)
                 {
                     return true;
                 }
@@ -41,7 +41,7 @@ namespace chen0040.ExpertSystem
         {
             foreach(Clause fact in m_facts)
             {
-                if (fact.matchClause(c) == IntersectionType.INCLUDE)
+                if (fact.MatchClause(c) == IntersectionType.INCLUDE)
                 {
                     return true;
                 }

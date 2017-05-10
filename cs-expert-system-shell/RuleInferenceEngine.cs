@@ -51,7 +51,7 @@ namespace chen0040.ExpertSystem
             foreach(Rule rule in m_rules)
             {
                 Clause consequent = rule.getConsequent();
-                if (consequent.getVariable()==goal_variable)
+                if (consequent.Variable==goal_variable)
                 {
                     goal_stack.Add(rule);
                 }
@@ -105,7 +105,7 @@ namespace chen0040.ExpertSystem
             foreach(Rule rule in m_rules)
             {
                 Clause consequent = rule.getConsequent();
-                IntersectionType it = consequent.matchClause(goal);
+                IntersectionType it = consequent.MatchClause(goal);
                 if (it == IntersectionType.INCLUDE)
                 {
                     goal_stack.Add(rule);
