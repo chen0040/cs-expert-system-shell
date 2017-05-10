@@ -1,12 +1,11 @@
 ﻿using chen0040.ExpertSystem;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace cs_expert_system_shell_tests
 {
-    class UnitTestRuleInferenceEngine
+    public class UnitTestRuleInferenceEngine
     {
         [Fact]
         public void TestBackwardChain()
@@ -25,7 +24,7 @@ namespace cs_expert_system_shell_tests
 
             Console.WriteLine("Conclusion: " + conclusion);
 
-            //Assert.Equal(conclusion.getValue(), "");
+            Assert.Equal(conclusion.getValue(), "MiniVan");
         }
 
         public void demoBackwardChainWithNullMemory()
