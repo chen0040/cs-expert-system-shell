@@ -2,11 +2,18 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace cs_expert_system_shell_tests
 {
     public class UnitTestRuleInferenceEngine
     {
+        ITestOutputHelper console;
+        public UnitTestRuleInferenceEngine(ITestOutputHelper console)
+        {
+            this.console = console;
+        }
+
         [Fact]
         public void TestBackwardChain()
         {
@@ -16,13 +23,13 @@ namespace cs_expert_system_shell_tests
             rie.AddFact(new IsClause("num_doors", "3"));
             rie.AddFact(new IsClause("size", "medium"));
 
-            Console.WriteLine("Infer: vehicle");
+            console.WriteLine("Infer: vehicle");
 
             List<Clause> unproved_conditions = new List<Clause>();
 
             Clause conclusion = rie.Infer("vehicle", unproved_conditions);
 
-            Console.WriteLine("Conclusion: " + conclusion);
+            console.WriteLine("Conclusion: " + conclusion);
 
             Assert.Equal(conclusion.Value, "MiniVan");
         }
@@ -31,7 +38,7 @@ namespace cs_expert_system_shell_tests
         {
             RuleInferenceEngine rie = getInferenceEngine();
 
-            Console.WriteLine("Infer with All Facts Cleared:");
+            console.WriteLine("Infer with All Facts Cleared:");
             rie.ClearFacts();
 
             List<Clause> unproved_conditions = new List<Clause>();
@@ -47,17 +54,17 @@ namespace cs_expert_system_shell_tests
                         break;
                     }
                     Clause c = unproved_conditions[0];
-                    Console.WriteLine("ask: " + c + "?");
+                    console.WriteLine("ask: " + c + "?");
                     unproved_conditions.Clear();
-                    Console.WriteLine("What is " + c.Variable + "?");
+                    console.WriteLine("What is " + c.Variable + "?");
                     String value = Console.ReadLine();
                     rie.AddFact(new IsClause(c.Variable, value));
                 }
             }
 
-            Console.WriteLine("Conclusion: " + conclusion);
-            Console.WriteLine("Memory: ");
-            Console.WriteLine(rie.Facts);
+            console.WriteLine("Conclusion: " + conclusion);
+            console.WriteLine("Memory: ");
+            console.WriteLine("{0}", rie.Facts);
         }
 
         [Fact]
@@ -69,15 +76,15 @@ namespace cs_expert_system_shell_tests
             rie.AddFact(new IsClause("num_doors", "3"));
             rie.AddFact(new IsClause("size", "medium"));
 
-            Console.WriteLine("before inference");
-            Console.WriteLine(rie.Facts);
-            Console.WriteLine();
+            console.WriteLine("before inference");
+            console.WriteLine("{0}", rie.Facts);
+            console.WriteLine("");
 
             rie.Infer(); //forward chain
 
-            Console.WriteLine("after inference");
-            Console.WriteLine(rie.Facts);
-            Console.WriteLine();
+            console.WriteLine("after inference");
+            console.WriteLine("{0}", rie.Facts);
+            console.WriteLine("");
 
             Assert.Equal(6, rie.Facts.Count);
         }

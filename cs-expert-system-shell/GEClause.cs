@@ -18,8 +18,8 @@ namespace chen0040.ExpertSystem
 		    string v1=_value;
 		    string v2=rhs.Value;
 		
-		    double a=0;
-		    double b=0;
+		    var a=0.0;
+		    var b=0.0;
 
             if(double.TryParse(v1, out a) && double.TryParse(v2, out b))
             {

@@ -64,16 +64,16 @@ namespace chen0040.ExpertSystem
                 while (rule.HasNextAntecedents())
                 {
                     Clause antecedent = rule.NextAntecedent();
-                    if (!m_wm.isFact(antecedent))
+                    if (!m_wm.IsFact(antecedent))
                     {
-                        if (m_wm.isNotFact(antecedent)) //conflict with memory
+                        if (m_wm.IsNotFact(antecedent)) //conflict with memory
                         {
                             goal_reached = false;
                             break;
                         }
                         else if (IsFact(antecedent, unproved_conditions)) //deduce to be a fact
                         {
-                            m_wm.addFact(antecedent);
+                            m_wm.AddFact(antecedent);
                         }
                         else //deduce to not be a fact
                         {
@@ -95,7 +95,7 @@ namespace chen0040.ExpertSystem
 
         public void ClearFacts()
         {
-            m_wm.clearFacts();
+            m_wm.ClearFacts();
         }
 
         protected bool IsFact(Clause goal, List<Clause> unproved_conditions)
@@ -125,16 +125,16 @@ namespace chen0040.ExpertSystem
                     while (rule.HasNextAntecedents())
                     {
                         Clause antecedent = rule.NextAntecedent();
-                        if (!m_wm.isFact(antecedent))
+                        if (!m_wm.IsFact(antecedent))
                         {
-                            if (m_wm.isNotFact(antecedent))
+                            if (m_wm.IsNotFact(antecedent))
                             {
                                 goal_reached = false;
                                 break;
                             }
                             else if (IsFact(antecedent, unproved_conditions))
                             {
-                                m_wm.addFact(antecedent);
+                                m_wm.AddFact(antecedent);
                             }
                             else
                             {
@@ -187,7 +187,7 @@ namespace chen0040.ExpertSystem
         /// <param name="c"></param>
         public void AddFact(Clause c)
         {
-            m_wm.addFact(c);
+            m_wm.AddFact(c);
         }
 
         /// <summary>

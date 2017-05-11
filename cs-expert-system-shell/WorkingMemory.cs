@@ -7,21 +7,21 @@ namespace chen0040.ExpertSystem
 {
     public class WorkingMemory
     {
-        protected List<Clause> m_facts = new List<Clause>();
+        protected List<Clause> _facts = new List<Clause>();
 
         public WorkingMemory()
         {
 
         }
 
-        public void addFact(Clause fact)
+        public void AddFact(Clause fact)
         {
-            m_facts.Add(fact);
+            _facts.Add(fact);
         }
 
-        public bool isNotFact(Clause c)
+        public bool IsNotFact(Clause c)
         {
-            foreach(Clause fact in m_facts)
+            foreach(Clause fact in _facts)
             {
                 if (fact.MatchClause(c) == IntersectionType.MUTUALLY_EXCLUDE)
                 {
@@ -32,14 +32,14 @@ namespace chen0040.ExpertSystem
             return false;
         }
 
-        public void clearFacts()
+        public void ClearFacts()
         {
-            m_facts.Clear();
+            _facts.Clear();
         }
 
-        public bool isFact(Clause c)
+        public bool IsFact(Clause c)
         {
-            foreach(Clause fact in m_facts)
+            foreach(Clause fact in _facts)
             {
                 if (fact.MatchClause(c) == IntersectionType.INCLUDE)
                 {
@@ -55,7 +55,7 @@ namespace chen0040.ExpertSystem
             StringBuilder message = new StringBuilder();
 
             bool first_clause = true;
-            foreach(Clause cc in m_facts)
+            foreach(Clause cc in _facts)
             {
                 if (first_clause)
                 {
@@ -73,7 +73,7 @@ namespace chen0040.ExpertSystem
 
         public int Count
         {
-            get { return m_facts.Count;  }
+            get { return _facts.Count;  }
         }
     }
 }

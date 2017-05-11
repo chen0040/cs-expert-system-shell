@@ -62,9 +62,9 @@ namespace chen0040.ExpertSystem
 
         public void fire(WorkingMemory wm)
         {
-            if (!wm.isFact(m_consequent))
+            if (!wm.IsFact(m_consequent))
             {
-                wm.addFact(m_consequent);
+                wm.AddFact(m_consequent);
             }
 
             m_fired = true;
@@ -74,7 +74,7 @@ namespace chen0040.ExpertSystem
         {
             foreach (Clause antecedent in m_antecedents) 
             {
-                if (!wm.isFact(antecedent))
+                if (!wm.IsFact(antecedent))
                 {
                     return false;
                 }
