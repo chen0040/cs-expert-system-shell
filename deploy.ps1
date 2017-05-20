@@ -1,0 +1,2 @@
+dotnet pack cs-expert-system-shell/cs-expert-system-shell.csproj /p:PackageVersion=1.0.1 --configuration release --include-source --output ../build
+nuget push build/cs-expert-system-shell.1.0.1.nupkg -Source https://www.nuget.org/api/v2/package
