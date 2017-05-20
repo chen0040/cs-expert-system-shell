@@ -7,7 +7,9 @@ C# implementation of an expert system shell, targeting .Net Core 1.1
 
 Run the following command to install:
 
+```bash
 Install-Package cs-expert-system-shell
+```
 
 # Usage
 
